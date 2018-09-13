@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <!--init-param用来让DispatcherServlet在初始化中扫描Sping的xml文件，从而纳入spring容器进行管理，-->
+        <!--也就将spring的xml文件中所创建的对象管理起来-->
+       <init-param>
+           <param-name>contextConfigLocation</param-name>
+           <param-value>classpath:conf/spring/Spring-*.xml</param-value>
+
+       </init-param>
+        <load-on-startup>1</load-on-startup>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <display-name>AccessFilter</display-name>
+        <filter-name>AccessFilter</filter-name>
+        <filter-class>note.web.AccessFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccessFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+
+
+
+
+    <servlet>
+        <description></description>
+        <display-name>ImageServlet</display-name>
+        <servlet-name>ImageServlet</servlet-name>
+        <servlet-class>note.web.ImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImageServlet</servlet-name>
+        <url-pattern>/demoimg</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,23 @@
+练习1：
+	Engineer类  Car类
+		将Engineer注入到Car,要求采用构造器注入
+
+练习2：
+	设计一个类(SomeBean),采用引用的方式注入四种集合类型的值。
+	List,Set,Map,Properties
+
+练习3：
+	什么是IOC?什么是DI?两者有什么关系?
+	
+练习4：将AdminDAO注入到LoginService。
+	要求使用set方式注入。
+	
+	LoginSerivce
+		private AdminDAO dao;
+		setDao(AdminDAO dao)
+
+	AdminDAO接口
+		public void findByAdminCode();
+	AdminDAOImpl类
+		
+		

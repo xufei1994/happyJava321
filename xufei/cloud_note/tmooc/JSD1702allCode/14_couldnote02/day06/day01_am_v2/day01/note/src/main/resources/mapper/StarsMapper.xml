@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.note.dao.StarsDao">
+	
+ 	<select id="findStarsByUserId"
+ 		parameterType="string"
+ 		resultType="cn.tedu.note.entity.Stars">
+ 		select 
+ 			cn_star_id as id,
+ 			cn_user_id as userId,
+ 			cn_stars as stars	
+ 		from
+ 			cn_star
+ 		where 
+ 			cn_user_id = #{userId}
+ 	</select>
+	<insert id="insertStars"
+		parameterType="cn.tedu.note.entity.Stars">
+		insert into cn_star(
+			cn_star_id,
+			cn_user_id,
+			cn_stars
+		)values(
+			#{id},
+			#{userId},
+			#{stars}
+		)
+	</insert>
+	<update id="updateStars"
+		parameterType="cn.tedu.note.entity.Stars">
+		update cn_star
+		set
+			cn_stars = #{stars}
+		where 
+			cn_user_id=#{userId} or
+			cn_star_id=#{id}
+	</update>
+</mapper>
+
+
+
+
+
+
+

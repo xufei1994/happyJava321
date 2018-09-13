@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day10</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>Spring 事务管理</h2>
+<h3>只读属性</h3>
+<p>对于单纯读取数据库操作, 可以设置readOnly=true, 可以提高数据的放效率.</p>
+<pre><code>@Transactional(readOnly=true)
+public List&lt;Map&lt;String, Object&gt;&gt; listNotesInTrashBin(
+        String userId) throws UserNotFoundException {
+</code></pre>
+
+<h3>事务的传播</h3>
+<p>业务过程重构时候需要业务方法调用业务方法, 这样就需要一个业务方法的事务传播到另外一个业务方法中, 整合为一个事务.</p>
+<p>案例: </p>
+<p><img src="1.png" /></p>
+<p>步骤:</p>
+<ol>
+<li>
+<p>创建数据表:</p>
+<pre><code>create table cn_star (
+    cn_star_id varchar(50),
+    cn_user_id varchar(50),
+    cn_stars int,
+    primary key(cn_star_id)
+);
+</code></pre>
+
+</li>
+<li>
+<p>声明 StarsDao</p>
+<pre><code>public interface StarsDao {
+    Stars findStarsByUserId(String userId);
+
+    int insertStars(Stars stars);
+
+    int updateStars(Stars stars);
+}
+</code></pre>
+
+</li>
+<li>
+<p>声明SQL StarsMapper.xml</p>
+<pre><code>&lt;mapper namespace=&quot;cn.tedu.note.dao.StarsDao&quot;&gt;
+
+    &lt;select id=&quot;findStarsByUserId&quot;
+        parameterType=&quot;string&quot;
+        resultType=&quot;cn.tedu.note.entity.Stars&quot;&gt;
+        select 
+            cn_star_id as id,
+            cn_user_id as userId,
+            cn_stars as stars   
+        from
+            cn_star
+        where 
+            cn_user_id = #{userId}
+    &lt;/select&gt;
+    &lt;insert id=&quot;insertStars&quot;
+        parameterType=&quot;cn.tedu.note.entity.Stars&quot;&gt;
+        insert into cn_star(
+            cn_star_id,
+            cn_user_id,
+            cn_stars
+        )values(
+            #{id},
+            #{userId},
+            #{stars}
+        )
+    &lt;/insert&gt;
+    &lt;update id=&quot;updateStars&quot;
+        parameterType=&quot;cn.tedu.note.entity.Stars&quot;&gt;
+        update cn_star
+        set
+            cn_stars = #{stars}
+        where 
+            cn_user_id=#{userId} or
+            cn_star_id=#{id}
+    &lt;/update&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+</li>
+<li>
+<p>声明业务层接口方法 NoteService</p>
+<pre><code>boolean addStars(String userId, int stars)
+    throws UserNotFoundException;
+</code></pre>
+
+</li>
+<li>
+<p>实现方法 NoteServiceImpl</p>
+<pre><code>@Transactional
+public boolean addStars(String userId, int stars) 
+        throws UserNotFoundException {
+    if(userId==null||userId.trim().isEmpty()){
+        throw new UserNotFoundException(&quot;ID空&quot;);
+    }
+    User user=userDao.findUserById(userId);
+    if(user==null){
+        throw new UserNotFoundException(&quot;木有人&quot;);
+    }
+    //检查是否已经有星了
+    Stars st=starsDao.findStarsByUserId(userId);
+    if(st==null){//如果没有星星
+        String id = UUID.randomUUID().toString();
+        st = new Stars(id, userId, stars);
+        int n = starsDao.insertStars(st);
+        if(n!=1){
+            throw new RuntimeException(&quot;失败&quot;);
+        }
+    }else{//如果有星星,就在现有星星数量上增加
+        int n = st.getStars()+stars;
+        if(n&lt;0){
+            // n = 0; 
+            throw new RuntimeException(&quot;扣分太多!&quot;);
+        }
+        st.setStars(n);
+        n = starsDao.updateStars(st);
+        if(n!=1){
+            throw new RuntimeException(&quot;失败&quot;);
+        }
+    }
+    return true;
+}   
+</code></pre>
+
+</li>
+<li>
+<p>测试: NoteServiceTest</p>
+<pre><code>@Test
+public void testAddStars(){
+    String userId=&quot;03590914-a934-4da9-ba4d-b41799f917d1&quot;;
+    boolean b = service.addStars(userId, 5);
+    System.out.println(b);
+    b = service.addStars(userId, 6);
+    System.out.println(b);
+}
+</code></pre>
+
+</li>
+<li>
+<p>重构 addNote方法, 实现添加笔记时候送星星功能, 进而实现事务的传播:</p>
+<pre><code>@Transactional
+public Note addNote(String userId, 
+        String notebookId, String title)
+        throws UserNotFoundException, 
+        NotebookNotFoundException {
+
+    if(userId==null||userId.trim().isEmpty()){
+        throw new UserNotFoundException(&quot;ID空&quot;);
+    }
+    User user=userDao.findUserById(userId);
+    if(user==null){
+        throw new UserNotFoundException(&quot;木有人&quot;);
+    }
+    if(notebookId==null||notebookId.trim().isEmpty()){
+        throw new NotebookNotFoundException(&quot;ID空&quot;);
+    }
+    int n=notebookDao.countNotebookById(notebookId);
+    if(n!=1){
+        throw new NotebookNotFoundException(&quot;没有笔记本&quot;);
+    }
+    if(title==null || title.trim().isEmpty()){
+        title=&quot;葵花宝典&quot;;
+    }
+    String id = UUID.randomUUID().toString();
+    String statusId = &quot;1&quot;;
+    String typeId = &quot;1&quot;;
+    String body = &quot;&quot;;
+    long time=System.currentTimeMillis();
+    Note note = new Note(id, notebookId,
+        userId, statusId, typeId, title, 
+        body, time, time);
+    n = noteDao.addNote(note);
+    if(n!=1){
+        throw new NoteNotFoundException(&quot;保存失败&quot;);
+    }
+    //当前的事务, 会传播到 addStart方法中
+    //整合为一个事务!
+    addStars(userId, 5);
+
+    return note;
+} 
+</code></pre>
+
+</li>
+<li>
+<p>测试...</p>
+</li>
+</ol>
+<h3>事务传播(propagation)属性</h3>
+<p>重点掌握 Propagation.REQUIRED</p>
+<ol>
+<li>
+@Transactional(propagation=Propagation.REQUIRED)
+<ul>
+<li>需要事务, 如果没有事务创建新事务, 如果当前有事务参与当前事务</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.MANDATORY)
+<ul>
+<li>必须有事务, 如果当前没有事务就抛异常</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.NEVER)
+<ul>
+<li>绝不, 绝对不能有事务, 如果在事务中调用则抛出异常</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.NESTED)
+<ul>
+<li>嵌套, 必须被嵌套到其他事务中</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.NOT_SUPPORTED)
+<ul>
+<li>不支持事务</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.SUPPORTS)
+<ul>
+<li>支持事务, 如果没有事务也不会创建新事务</li>
+</ul>
+</li>
+<li>
+@Transactional(propagation=Propagation.REQUIRES_NEW)
+<ul>
+<li>必须是新事务, 如果有当前事务, 挂起当前事务并且开启新事务.</li>
+</ul>
+</li>
+</ol>
+<h3>事务隔离属性</h3>
+<p>一共有4种, 一般采用 @Transactional(isolation=Isolation.READ_COMMITTED) 级别, 是并发性能和安全性折中的选择. 是大多数软件项目采用的隔离级别.</p>
+<h3>声明式事务</h3>
+<p>就是所有业务方法使用@Transactional, 如果是只读方法, 建议增加readOnly=true </p>
+<p>面试题目:</p>
+<pre><code>Spring 声明式事务是如何实现的?
+答案: 利用AOP技术实现.
+</code></pre>
+
+<h2>文件的上载与下载</h2>
+<h3>HTTP协议中文件是如何下载的</h3>
+<p><a href="http://doc.tedu.cn/rfc/rfc2616.txt" title="HTTP 1.1 协议参考">http://doc.tedu.cn/rfc/rfc2616.txt</a></p>
+<p>根据HTTP1.1协议, 知道服务器向客户端传输数据如下:</p>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: image/png
+Content-Length: 130
+
+数据内容
+</code></pre>
+
+<p>安装这个规则, 可以利用Servlet向客户端发送自定义图片:</p>
+<ol>
+<li>
+<p>声明Servlet</p>
+<pre><code>public class ImageServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    protected void doGet(
+            HttpServletRequest request, 
+            HttpServletResponse response) 
+            throws ServletException, IOException {
+        //发送照片
+        byte[] png = createPng();
+        response.setContentType(&quot;image/png&quot;); 
+        response.setContentLength(png.length);
+        //在消息body中发送消息数据
+        response.getOutputStream().write(png);
+    }
+    /**
+     * 创建一个图片, 并且编码为 png 格式, 返回
+     * 编码以后的数据 
+     */
+    private byte[] createPng() throws IOException{ 
+        BufferedImage img = 
+            new BufferedImage(200, 80, 
+            BufferedImage.TYPE_3BYTE_BGR);
+        //在图片上绘制内容
+        img.setRGB(100, 40, 0xffffff);
+        //将图片编码为PNG
+        ByteArrayOutputStream out = 
+                new ByteArrayOutputStream();
+        ImageIO.write(img, &quot;png&quot;, out);
+        out.close();
+        byte[] png = out.toByteArray();
+        return png;
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>配置Servlet </p>
+<pre><code>  &lt;servlet&gt;
+    &lt;description&gt;&lt;/description&gt;
+    &lt;display-name&gt;ImageServlet&lt;/display-name&gt;
+    &lt;servlet-name&gt;ImageServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;cn.tedu.note.web.ImageServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;ImageServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/demoimg&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+<pre><code>http://localhost:8080/note/demoimg
+</code></pre>
+
+<blockquote>
+<p>显示生产的图片</p>
+</blockquote>
+</li>
+<li>
+<p>在网页中显示图片:</p>
+<pre><code>&lt;h1&gt;自定义图片&lt;/h1&gt;
+&lt;p&gt;
+    Servlet 处理自定义图片
+    &lt;img alt=&quot;&quot; src=&quot;demoimg&quot;&gt;
+&lt;/p&gt;
+</code></pre>
+
+</li>
+</ol>
+<p>利用Spring MVC也可以动态生产图片:</p>
+<ol>
+<li>
+<p>添加控制器方法 UserController</p>
+<pre><code>/*
+ * @ResponseBody 注解会自动处理控制返回值
+ * 1. 如果是JavaBean(数组,集合) 返回JSON
+ * 2. 如果是byte数字, 则将byte数组直接装入
+ *    响应消息的body
+ */
+//produces=&quot;image/png&quot;用于设置 content-type
+@RequestMapping(value=&quot;/image.do&quot;,
+        produces=&quot;image/png&quot;)
+@ResponseBody
+public byte[] image() throws Exception{
+    return createPng();
+}
+
+/**
+ * 创建一个图片, 并且编码为 png 格式, 返回
+ * 编码以后的数据 
+ */
+private byte[] createPng() throws IOException{ 
+    BufferedImage img = 
+        new BufferedImage(200, 80, 
+        BufferedImage.TYPE_3BYTE_BGR);
+    //在图片上绘制内容
+    img.setRGB(100, 40, 0xffffff);
+    //将图片编码为PNG
+    ByteArrayOutputStream out = 
+            new ByteArrayOutputStream();
+    ImageIO.write(img, &quot;png&quot;, out);
+    out.close();
+    byte[] png = out.toByteArray();
+    return png;
+}
+</code></pre>
+
+</li>
+<li>
+<p>在页面中显示图片:</p>
+<pre><code>&lt;p&gt;
+    Spring MVC 处理自定义图片
+    &lt;img alt=&quot;&quot; src=&quot;user/image.do&quot;&gt;
+&lt;/p&gt;
+</code></pre>
+
+</li>
+</ol>
+<p>根据RFC 2616 的 19.5.1 章节内容, 设置HTTP协议头, 就可以实现图片下载保存功能:</p>
+<pre><code>Content-Type: application/octet-stream
+Content-Disposition: attachment; filename=&quot;fname.ext&quot;
+</code></pre>
+
+<ol>
+<li>
+<p>声明控制器方法 UserController</p>
+<pre><code>@RequestMapping(value=&quot;/downloadimg.do&quot;,
+    produces=&quot;application/octet-stream&quot;)
+@ResponseBody
+public byte[] downloadimg(
+        HttpServletResponse res) 
+    throws IOException{
+    //参考: 19.5.1 Content-Disposition
+    //Content-Disposition: attachment; filename=&quot;fname.ext&quot;
+    res.setHeader(&quot;Content-Disposition&quot;,
+        &quot;attachment; filename=\&quot;demo.png\&quot;&quot;);
+    return createPng();
+}
+</code></pre>
+
+</li>
+<li>
+<p>网页上设置下载链接</p>
+<pre><code>&lt;h1&gt;下载图片&lt;/h1&gt;
+&lt;a href=&quot;user/downloadimg.do&quot;&gt;图片&lt;/a&gt; 
+</code></pre>
+
+</li>
+</ol>
+<p>Excel 文件的下载: 与下载图片一样, 只需要更换API生产文件数据就可以实现下载功能了.</p>
+<ol>
+<li>
+<p>导入POI API, 用于处理Excel文件</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;
+  &lt;artifactId&gt;poi&lt;/artifactId&gt;
+  &lt;version&gt;3.13&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+</li>
+<li>
+<p>利用POI生成Excel文件数据:</p>
+<pre><code>private byte[] createExcel() 
+    throws IOException{
+    //创建工作簿
+    HSSFWorkbook workbook=new HSSFWorkbook();
+    //创建工作表
+    HSSFSheet sheet=
+            workbook.createSheet(&quot;Demo&quot;);
+    //在工作表中创建数据行
+    HSSFRow row = sheet.createRow(0);
+    //创建行中的格子
+    HSSFCell cell = row.createCell(0);
+    cell.setCellValue(&quot;Hello World!&quot;); 
+    //将Excel文件保存为 byte 数组
+    ByteArrayOutputStream out =
+            new ByteArrayOutputStream();
+    workbook.write(out);
+    out.close();
+    return out.toByteArray();
+}
+</code></pre>
+
+</li>
+<li>
+<p>利用Spring MVC控制器下载Excel:</p>
+<pre><code>@RequestMapping(value=&quot;/excel.do&quot;,
+    produces=&quot;application/octet-stream&quot;)
+@ResponseBody
+public byte[] excel(
+        HttpServletResponse res) 
+        throws IOException{
+    //参考: 19.5.1 Content-Disposition
+    res.setHeader(&quot;Content-Disposition&quot;,
+    &quot;attachment; filename=\&quot;demo.xls\&quot;&quot;);
+    return createExcel();
+}       
+</code></pre>
+
+</li>
+<li>
+<p>在网页上连接下载控制器:</p>
+<pre><code>&lt;h1&gt;下载Excel&lt;/h1&gt;
+&lt;a href=&quot;user/excel.do&quot;&gt;Excel 文件&lt;/a&gt; 
+</code></pre>
+
+</li>
+</ol>
+<h2>上载文件</h2>
+<p>上载文件协议 <a href="http://doc.tedu.cn/rfc-cn/RFC1867.txt">http://doc.tedu.cn/rfc-cn/RFC1867.txt</a></p>
+<p>文件上载: </p>
+<h3>1. 客户端:</h3>
+<pre><code>    &lt;h1&gt;文件上载&lt;/h1&gt;
+    &lt;FORM ENCTYPE=&quot;multipart/form-data&quot; 
+        ACTION=&quot;user/upload.do&quot; METHOD=&quot;POST&quot;&gt;
+      File to process:&lt;br&gt; 
+      &lt;INPUT NAME=&quot;userfile1&quot; TYPE=&quot;file&quot;&gt;&lt;br&gt;
+      &lt;INPUT NAME=&quot;userfile2&quot; TYPE=&quot;file&quot;&gt;&lt;br&gt;
+      &lt;INPUT TYPE=&quot;submit&quot; VALUE=&quot;Send File&quot;&gt;
+    &lt;/FORM&gt; 
+</code></pre>
+
+<h3>2. 服务器端:</h3>
+<ol>
+<li>
+<p>导入 上载组件:</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+  &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+  &lt;version&gt;1.3.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+</li>
+<li>
+<p>配置上载解析器 spring-mvc.xml</p>
+<pre><code>&lt;bean id=&quot;multipartResolver&quot;
+    class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;
+    &lt;!-- one of the properties available; the maximum file size in bytes --&gt;
+    &lt;property name=&quot;maxUploadSize&quot; 
+        value=&quot;10000000&quot;/&gt;
+    &lt;property name=&quot;defaultEncoding&quot;
+        value=&quot;UTF-8&quot;/&gt;
+&lt;/bean&gt; 
+</code></pre>
+
+</li>
+<li>
+<p>开发控制器:</p>
+<pre><code>@RequestMapping(&quot;/upload.do&quot;)
+@ResponseBody
+public JsonResult upload( 
+        MultipartFile userfile1, 
+        MultipartFile userfile2) throws Exception{
+    //Spring MVC 中可以利用 MultipartFile 
+    //接收 上载的文件! 文件中的一切数据
+    //都可以从 MultipartFile 对象中找到
+
+    //获取上再是原始文件名
+    String file1 = 
+        userfile1.getOriginalFilename();
+    String file2 = 
+        userfile2.getOriginalFilename();
+
+    System.out.println(file1);
+    System.out.println(file2);
+
+    //保存文件的3种方法:
+    //1. transferTo(目标文件)
+    //   将文件直接保存到目标文件, 可以处理大文件
+    //2. userfile1.getBytes() 获取文件的全部数据
+    //   将文件全部读取到内存, 适合处理小文件!!
+    //3. userfile1.getInputStream()
+    //   获取上载文件的流, 适合处理大文件
+
+    //保存的目标文件夹: /home/soft01/demo
+    File dir = new File(&quot;D:/demo&quot;);
+    dir.mkdir();
+
+    File f1 = new File(dir, file1);
+    File f2 = new File(dir, file2);
+
+    //第一种保存文件
+    //userfile1.transferTo(f1);
+    //userfile2.transferTo(f2);
+
+    //第三种 利用流复制数据
+    InputStream in1 = userfile1.getInputStream();
+    FileOutputStream out1 = 
+        new FileOutputStream(f1);
+    int b;
+    while((b=in1.read())!=-1){
+        out1.write(b);
+    }
+    in1.close();
+    out1.close();
+
+    InputStream in2 = userfile2.getInputStream();
+    FileOutputStream out2=
+            new FileOutputStream(f2);
+    byte[] buf= new byte[8*1024];
+    int n;
+    while((n=in2.read(buf))!=-1){
+        out2.write(buf, 0, n);
+    }
+    in2.close();
+    out2.close();
+
+    return new JsonResult(true);
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+<hr />
+<ol>
+<li>实现笔记列表导出到Excel功能</li>
+<li>实现文件上载功能</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

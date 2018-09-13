@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day05</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>云笔记</h1>
+<h2>笔记本列表</h2>
+<h3>3. 控制器</h3>
+<ol>
+<li>
+<p>添加控制器父类AbstractController, 封装公共的异常处理方法:</p>
+<pre><code>public abstract class AbstractController {
+    /**
+     * 在其他控制器方法执行出现异常时候, 执行
+     * 异常处理方法 handleException
+     */
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public Object handleException( Exception e){
+        e.printStackTrace();
+        return new JsonResult(e);
+    }
+
+}
+</code></pre>
+
+<blockquote>
+<p>重构 UserController, 使其继承于 AbstractController</p>
+</blockquote>
+<pre><code>略...
+</code></pre>
+
+</li>
+<li>
+<p>创建控制器类 NotebookController:</p>
+<pre><code>@RequestMapping(&quot;/notebook&quot;)
+@Controller
+public class NotebookController extends AbstractController {
+
+    @Resource
+    private NotebookService notebookService;
+
+    @RequestMapping(&quot;/list.do&quot;)
+    @ResponseBody
+    public JsonResult list(String userId){
+        List&lt;Map&lt;String, Object&gt;&gt; list=
+            notebookService.listNotebooks(userId);
+        return new JsonResult(list);
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试</p>
+<pre><code>http://localhost:8080/note/notebook/list.do?userId=52f9b276-38ee-447f-a3aa-0d54e7a736e4
+
+http://localhost:8080/note/notebook/list.do?userId=abc
+
+http://localhost:8080/note/notebook/list.do
+</code></pre>
+
+<blockquote>
+<p>测试结果体现了控制器能够利用父类的异常处理方法处理异常情况.</p>
+</blockquote>
+</li>
+</ol>
+<h3>4. 表现层脚本编程</h3>
+<ol>
+<li>
+<p>更新log_in.html 引入cookie操作API:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;scripts/cookie_util.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+</li>
+<li>
+<p>更新 login.js 的loginAction方法, 在登录成功时候将userId保存到cookie中:</p>
+<pre><code>...
+//登录成功以后将userId保存到cookie中
+addCookie(&quot;userId&quot;, user.id); 
+...
+</code></pre>
+
+</li>
+<li>
+<p>在edit.html添加JS脚本:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;
+    src=&quot;scripts/cookie_util.js&quot;&gt;&lt;/script&gt; 
+
+&lt;script type=&quot;text/javascript&quot;
+    src=&quot;scripts/note.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<blockquote>
+<p>为了提高页面的用户体验, 减少页面加载延迟, 将脚本在页面后部加载.</p>
+</blockquote>
+</li>
+<li>
+<p>添加scripts/note.js 文件:</p>
+<pre><code>var SUCCESS = 0;
+var ERROR = 1;
+
+$(function(){
+
+    var userId = getCookie('userId');
+    console.log(userId);
+
+});
+</code></pre>
+
+<blockquote>
+<p>scripts/note.js 编码一定是 utf-8 </p>
+</blockquote>
+</li>
+<li>
+<p>测试: 登录以后可以再edit.html 的控制台上能够看到 userId, 可以通过浏览器的控制台检查cookie保存情况:</p>
+<p><img src="cookie.png" /></p>
+</li>
+<li>
+<p>在ready函数中调用方法 loadNotebooks() 在页面加载后立即加载笔记本列表数据:</p>
+<pre><code>//网页加载以后, 立即读取笔记本列表
+loadNotebooks();
+</code></pre>
+
+</li>
+<li>
+<p>添加方法loadNotebooks, 利用ajax加载笔记本列表数据:</p>
+<pre><code>/** 加载笔记本列表数据 */
+function loadNotebooks(){
+    //利用ajax从服务器获取(get)数据, 使用getJSON方法
+    var url = 'notebook/list.do';
+    var data = {userId:getCookie('userId'),
+            name:'demo'};
+    $.getJSON(url, data, function(result){
+        console.log(result);
+        if(result.state==SUCCESS){
+            var notebooks = result.data;
+            //在showNotebooks方法中将全部的
+            //笔记本数据 notebooks 显示到 
+            // notebook-list 区域
+            showNotebooks(notebooks);
+        }else{
+            alert(result.message);
+        }
+    });
+}
+</code></pre>
+
+<blockquote>
+<p>提示: 为了保存代码的简洁, 将显示笔记本列表的算法封装到showNotebooks方法中. </p>
+</blockquote>
+</li>
+<li>
+<p>声明showNotebooks方法, 显示在notebook-list区域的ul中显示笔记本列表信息:</p>
+<pre><code>/** 在notebook-list区域中显示笔记本列表 */
+function showNotebooks(notebooks){
+    //算法: 
+    //找显示笔记本列表的区域的ul元素
+    //遍历notebooks数组, 将为每个对象创建一个li
+    //元素, 添加到 ul元素中.
+    var ul = $('#notebook-list ul');
+    ul.empty();//清除ul中原有的内容
+    for(var i=0; i&lt;notebooks.length; i++){
+        var notebook = notebooks[i];
+        var li = notebookTemplate.replace(
+                '[name]', notebook.name);
+        li = $(li);
+        ul.append(li);
+    }
+}
+
+var notebookTemplate = 
+    '&lt;li class=&quot;online&quot;&gt;'+
+    '&lt;a&gt;&lt;i class=&quot;fa fa-book&quot; title=&quot;online&quot; '+
+    'rel=&quot;tooltip-bottom&quot;&gt;&lt;/i&gt; [name]&lt;/a&gt;'+
+    '&lt;/li&gt;';
+</code></pre>
+
+<blockquote>
+<p>提示: notebookTemplate 变量定义了显示笔记本的li元素模板. 来自edit.html页面中.</p>
+</blockquote>
+</li>
+<li>
+<p>测试...</p>
+</li>
+</ol>
+<h2>笔记列表功能</h2>
+<p>原理:</p>
+<p><img src="note.png" /></p>
+<h3>1. 持久层</h3>
+<ol>
+<li>
+<p>声明持久层查询方法 NoteDao</p>
+<pre><code>public interface NoteDao {
+    List&lt;Map&lt;String,Object&gt;&gt; 
+        findNotesByNotebookId(
+        String notebookId);
+}
+</code></pre>
+
+</li>
+<li>
+<p>声明SQL NoteMapper.xml</p>
+<pre><code>&lt;mapper namespace=&quot;cn.tedu.note.dao.NoteDao&quot;&gt;
+
+    &lt;select id=&quot;findNotesByNotebookId&quot;
+        parameterType=&quot;string&quot;
+        resultType=&quot;map&quot;&gt;
+        select 
+            cn_note_id as id,
+            cn_note_title as title 
+        from 
+            cn_note
+        where
+            cn_notebook_id = #{notebookId}
+        order by
+            cn_note_last_modify_time desc
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试:</p>
+<pre><code>public class NoteDaoTest  extends BaseTest{
+
+    NoteDao dao;
+
+    @Before
+    public void initDao(){
+        dao = ctx.getBean(&quot;noteDao&quot;,
+                NoteDao.class);
+    }
+
+    @Test
+    //select cn_notebook_id from cn_note;
+    public void testFindNotesByNotebookId(){
+        String id=&quot;fa8d3d9d-2de5-4cfe-845f-951041bcc461&quot;;
+        List&lt;Map&lt;String, Object&gt;&gt; list=
+            dao.findNotesByNotebookId(id);
+        for (Map&lt;String, Object&gt; map : list) {
+            System.out.println(map); 
+        }
+    }
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>2. 业务层</h3>
+<ol>
+<li>
+<p>声明业务层方法 NoteService</p>
+<pre><code>public interface NoteService {
+
+    List&lt;Map&lt;String, Object&gt;&gt; listNotes( String notebookId)
+        throws NotebookNoteFoundExcepotion;
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>声明业务异常:NotebookNoteFoundExcepotion</p>
+<pre><code>略...
+</code></pre>
+
+</li>
+<li>
+<p>实现业务层方法 NoteServiceImpl</p>
+<pre><code>@Service(&quot;noteService&quot;)
+public class NoteServiceImpl implements NoteService{
+
+    @Resource
+    private NoteDao noteDao;
+
+    @Resource
+    private NotebookDao notebookDao;
+
+    public List&lt;Map&lt;String, Object&gt;&gt; listNotes( String notebookId) 
+            throws NotebookNoteFoundExcepotion {
+        if(notebookId==null || notebookId.trim().isEmpty()){
+            throw new NotebookNoteFoundExcepotion(&quot;ID为空&quot;);
+        }
+        //Notebook notebook = notebookDao
+        //      .findNotebookById(notebookId);
+        //if(notebook==null){
+        //  throw new NotebookNoteFoundExcepotion(&quot;没有笔记本&quot;);
+        //}
+        int n = notebookDao.countNotebookById(
+                notebookId);
+        if(n!=1){
+            throw new NotebookNoteFoundExcepotion(&quot;没有笔记本&quot;);
+        }
+
+        return noteDao.findNotesByNotebookId(notebookId);
+    }
+}
+</code></pre>
+
+</li>
+<li>
+<p>重构NotebookDao, 添加统计方法 countNotebookById</p>
+<pre><code>int countNotebookById(String notebookId);
+</code></pre>
+
+</li>
+<li>
+<p>添加sql NotebookMapper.xml</p>
+<pre><code>&lt;select id=&quot;countNotebookById&quot;
+    parameterType=&quot;string&quot;
+    resultType=&quot;int&quot;&gt;
+    select 
+        count(*) as cnt     
+    from 
+        cn_notebook
+    where
+        cn_notebook_id = #{notebookId}
+&lt;/select&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试 NoteServiceTest:</p>
+<pre><code>public class NoteServiceTest  extends BaseTest{
+
+    NoteService service;
+
+    @Before
+    public void initService(){
+        service = ctx.getBean(&quot;noteService&quot;,
+                NoteService.class);
+    }
+
+    @Test
+    public void testListNotes(){
+        String id=&quot;fa8d3d9d-2de5-4cfe-845f-951041bcc461&quot;;
+        List&lt;Map&lt;String, Object&gt;&gt; list=
+            service.listNotes(id);
+        for (Map&lt;String, Object&gt; map : list) {
+            System.out.println(map); 
+        }
+    }
+}
+</code></pre>
+
+</li>
+</ol>
+<h3>3. 控制器</h3>
+<ol>
+<li>
+<p>添加控制器 NoteController</p>
+<pre><code>@Controller
+@RequestMapping(&quot;/note&quot;)
+public class NoteController extends AbstractController{
+
+     @Resource 
+     private NoteService noteService;
+
+     @RequestMapping(&quot;/list.do&quot;)
+     @ResponseBody
+     public JsonResult list(String notebookId){
+         List&lt;Map&lt;String, Object&gt;&gt; list= 
+            noteService.listNotes(notebookId);
+         return new JsonResult(list);
+     }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>测试:</p>
+<pre><code>http://localhost:8080/note/note/list.do?notebookId=d0b0727f-a233-4a1f-8600-f49fc1f25bc9
+</code></pre>
+
+</li>
+</ol>
+<h3>4. 表现层脚本</h3>
+<ol>
+<li>
+<p>重构edit.html, 设置笔记本列表ID notebook-list</p>
+<pre><code>&lt;div class=&quot;col-xs-2&quot; style='padding:0;' id='notebook-list'&gt;
+</code></pre>
+
+</li>
+<li>
+<p>在note.js 的ready方法中绑定 笔记本列表点击事件:</p>
+<pre><code>//绑定笔记本列表区域的点击事件
+$('#notebook-list').on(
+    'click','.notebook', loadNotes);
+</code></pre>
+
+<blockquote>
+<p>提示: 这里利用事件冒泡, 在父元素上绑定点击事件, Jquery提供的on方法可以非常方便区别发生事件的事件源. </p>
+<p>重构: 重构notebookTemplate, 为li元素添加 notebook 类:</p>
+</blockquote>
+<pre><code>var notebookTemplate = 
+    '&lt;li class=&quot;online notebook&quot;&gt;'+
+    '&lt;a&gt;&lt;i class=&quot;fa fa-book&quot; title=&quot;online&quot; '+
+    'rel=&quot;tooltip-bottom&quot;&gt;&lt;/i&gt; [name]&lt;/a&gt;'+
+    '&lt;/li&gt;';
+</code></pre>
+
+</li>
+<li>
+<p>添加事件处理方法 loadNotes: </p>
+<pre><code>/** 笔记本项目点击事件处理方法, 加载全部笔记 */
+function loadNotes(){
+    var li = $(this);//当前被点击的对象li
+
+    //在被点击的笔记本li增加选定效果
+    li.parent().find('a').removeClass('checked');
+    li.find('a').addClass('checked');
+
+    var url = 'note/list.do';
+
+    //li.data('notebookId') 方法可以获取绑定到li
+    //元素上的数据notebookId, 这个notebookId在
+    //showNotebooks方法中绑定li元素上的!
+
+    var data={notebookId:li.data('notebookId')};
+    console.log(data);
+    $.getJSON(url, data, function(result){
+        if(result.state==SUCCESS){
+            var notes = result.data;
+            showNotes(notes);
+        }else{
+            alert(result.message);
+        }
+    });
+}
+</code></pre>
+
+<blockquote>
+<p>提示: 笔记本点击时候的选择效果是后续重构过程中添加的.</p>
+<p>重构: 重构showNotebooks方法, 将notebookId绑定li元素上</p>
+</blockquote>
+<pre><code>...
+for(var i=0; i&lt;notebooks.length; i++){
+    var notebook = notebooks[i];
+    var li = notebookTemplate.replace(
+            '[name]', notebook.name);
+    li = $(li);
+    //将 notebook.id 绑定到 li
+    li.data('notebookId', notebook.id);
+
+    ul.append(li);
+}
+...
+</code></pre>
+
+</li>
+<li>
+<p>添加 showNotes 方法显示笔记到笔记列表区域:</p>
+<pre><code>/** 将笔记列表信息显示到屏幕上 */
+function showNotes(notes){
+    console.log(notes); 
+    //将每个笔记对象显示到屏幕的ul区域
+    var ul = $('#note-list ul');
+    ul.empty();
+    for(var i=0; i&lt;notes.length; i++){
+        var note = notes[i];
+        var li = noteTemplate.replace(
+                '[title]', note.title);
+        li = $(li);
+        ul.append(li);
+    }
+}
+
+var noteTemplate = '&lt;li class=&quot;online&quot;&gt;'+
+    '&lt;a&gt;'+
+    '&lt;i class=&quot;fa fa-file-text-o&quot; title=&quot;online&quot; rel=&quot;tooltip-bottom&quot;&gt;&lt;/i&gt; [title]&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_position btn_slide_down&quot;&gt;&lt;i class=&quot;fa fa-chevron-down&quot;&gt;&lt;/i&gt;&lt;/button&gt;'+
+    '&lt;/a&gt;'+
+    '&lt;div class=&quot;note_menu&quot; tabindex=&quot;-1&quot;&gt;'+
+    '&lt;dl&gt;'+
+        '&lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_move&quot; title=&quot;移动至...&quot;&gt;&lt;i class=&quot;fa fa-random&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+        '&lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_share&quot; title=&quot;分享&quot;&gt;&lt;i class=&quot;fa fa-sitemap&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+        '&lt;dt&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-xs btn_delete&quot; title=&quot;删除&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/dt&gt;'+
+    '&lt;/dl&gt;'+
+    '&lt;/div&gt;'+
+    '&lt;/li&gt;';
+</code></pre>
+
+<blockquote>
+<p>重构: edit.html, 设置笔记列表ID note-list</p>
+</blockquote>
+<pre><code>&lt;div class=&quot;col-xs-3&quot; style='padding:0;' id='note-list'&gt;
+</code></pre>
+
+</li>
+<li>
+<p>测试...</p>
+</li>
+</ol>
+<hr />
+<h2>作业</h2>
+<ol>
+<li>实现笔记本列表功能</li>
+<li>实现笔记列表功能</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
